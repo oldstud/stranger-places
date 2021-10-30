@@ -3,23 +3,19 @@ import React from 'react';
 
 import {
   Button,
-  SafeAreaView,
   Text,
+  View
 } from 'react-native';
-import { useSelector } from 'react-redux'
 
+
+import { Registration } from './screens/Registration';
 
 const App = () => {
-  const counter = useSelector((state) => state)
-    const handleClick = () => {
-      console.log(counter);
 
-    }
   return (
-    <SafeAreaView>
-     <Text>Welcome</Text>
-     <Button title='aaaa' onPress={handleClick}></Button>
-    </SafeAreaView>
+    <View>
+      <Registration/>
+    </View>
   );
 };
 
