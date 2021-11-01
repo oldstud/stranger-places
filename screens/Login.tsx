@@ -3,17 +3,23 @@ import { useDispatch } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
 import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
+import { DB } from '../sglib.config';
 
 
-export const Registration = () => {
+
+export const Login = () => {
 
     const [email,setEmail] = React.useState("");
     const [password,setpassword] = React.useState("");
-    const [repeatPassword,setRepeatPassword] = React.useState("");
+
     const dispatch = useDispatch();
 
-    const handleRegistration = ():void => {
-      dispatch(RegistrationFirebase(email,password))
+    const handleRegistration = async ():Promise<any> => {
+      
+       
+            const result = await DB.users.getAllUsers();
+            console.log(result)
+        
     }
 
     return (
@@ -32,12 +38,7 @@ export const Registration = () => {
          value={password}
          placeholder='Password'
         />
-        <TextInput
-         style={styles.input}
-         onChangeText={setRepeatPassword}
-         value={repeatPassword}
-         placeholder='Repeat password'
-        />
+
         <TouchableOpacity
         style={styles.nextButton}
         onPress={handleRegistration}
