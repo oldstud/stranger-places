@@ -1,8 +1,20 @@
-import { COUNTER_CHANGE } from './constants';
+import * as constants from './constants';
 
-export function changeCount(count) {
+export function loginRequest(value) {
     return {
-        type: COUNTER_CHANGE,
-        payload: count
+        type: constants.LOGIN_REQUEST,
+        payload: value
+    }
+}
+export function loginSuccess(value) {
+    return {
+        type: constants.LOGIN_SUCCESS,
+        payload: value
+    }
+}
+export function loginError(value) {
+    return {
+        type: constants.LOGIN_ERROR,
+        payload: value
     }
 }

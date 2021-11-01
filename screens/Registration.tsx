@@ -1,12 +1,21 @@
 import * as React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
+import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
+
 
 export const Registration = () => {
 
-    const [email,setEmail]=React.useState("");
-    const [password,setpassword]=React.useState("");
-    const [repeatPassword,setRepeatPassword]=React.useState("");
+    const [email,setEmail] = React.useState("");
+    const [password,setpassword] = React.useState("");
+    const [repeatPassword,setRepeatPassword] = React.useState("");
+    const dispatch = useDispatch();
+
+    const handleRegistration = () => {
+      dispatch(RegistrationFirebase(email,password))
+    }
+
 
     return (
 
@@ -33,7 +42,7 @@ export const Registration = () => {
         />
         <TouchableOpacity
         style={styles.nextButton}
-        
+        onPress={handleRegistration}
       >
         <Text style={styles.text}>Sign Up</Text>
       </TouchableOpacity>
