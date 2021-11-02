@@ -4,18 +4,20 @@ import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-
 import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
 import { DB } from '../sglib.config';
+import { IScreenProps } from './interfaces';
+import { Link, NavigationContainer } from '@react-navigation/native';
 
 
 
-export const Login = () => {
+export const Login:React.FC<IScreenProps> = ({navigation}):any => {
 
     const [email,setEmail] = React.useState("");
     const [password,setpassword] = React.useState("");
 
     const dispatch = useDispatch();
 
-    const handleRegistration = async ():Promise<any> => {
-      
+    const handleLogin = async ():Promise<any> => {
+          
        
             const result = await DB.users.getAllUsers();
             console.log(result)
@@ -41,14 +43,18 @@ export const Login = () => {
 
         <TouchableOpacity
         style={styles.nextButton}
-        onPress={handleRegistration}
+        onPress={handleLogin}
       >
         <Text style={styles.text}>Sign Up</Text>
       </TouchableOpacity>
+  
         <Button
-         title="< Sign In"
+         title="Sign Up >"
          color="#808080"
+         onPress={() => navigation.navigate('Registration')}
          />
+       
+         
     </View>
     )
 } 

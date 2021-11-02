@@ -3,9 +3,10 @@ import { useDispatch } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
 import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
+import { IScreenProps } from './interfaces';
 
 
-export const Registration = () => {
+export const Registration:React.FC<IScreenProps> = ({navigation}) => {
 
     const [email,setEmail] = React.useState("");
     const [password,setpassword] = React.useState("");
@@ -47,6 +48,7 @@ export const Registration = () => {
         <Button
          title="< Sign In"
          color="#808080"
+         onPress={()=>navigation.navigate('Login')}
          />
     </View>
     )
