@@ -1,0 +1,155 @@
+{
+    "project_info": {
+      "project_number": "111031493941",
+      "project_id": "internship-713e6",
+      "storage_bucket": "internship-713e6.appspot.com"
+    },
+    "client": [
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:111031493941:android:2d7bc2e794db0a8842d87c",
+          "android_client_info": {
+            "package_name": "com.rnintershiptest"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBxicX4gfAtp1ZoOoWvPbAn0qptACNSNdM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:111031493941:android:1b0bbb6cf38e158042d87c",
+          "android_client_info": {
+            "package_name": "com.strange_places_app"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBxicX4gfAtp1ZoOoWvPbAn0qptACNSNdM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:111031493941:android:0191e4b26e08a71542d87c",
+          "android_client_info": {
+            "package_name": "com.strangerplaces"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBxicX4gfAtp1ZoOoWvPbAn0qptACNSNdM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:111031493941:android:f3858530be95265042d87c",
+          "android_client_info": {
+            "package_name": "com.strangerplaces.internship"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBxicX4gfAtp1ZoOoWvPbAn0qptACNSNdM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      },
+      {
+        "client_info": {
+          "mobilesdk_app_id": "1:111031493941:android:5c96f497ccbc5f4142d87c",
+          "android_client_info": {
+            "package_name": "com.strangerplacesapp"
+          }
+        },
+        "oauth_client": [
+          {
+            "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+            "client_type": 3
+          }
+        ],
+        "api_key": [
+          {
+            "current_key": "AIzaSyBxicX4gfAtp1ZoOoWvPbAn0qptACNSNdM"
+          }
+        ],
+        "services": {
+          "appinvite_service": {
+            "other_platform_oauth_client": [
+              {
+                "client_id": "111031493941-h93tclg3k4he9di5slfscpoeba8dv50m.apps.googleusercontent.com",
+                "client_type": 3
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "configuration_version": "1"
+  }
