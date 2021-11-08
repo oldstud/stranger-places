@@ -1,10 +1,11 @@
-import { ActionI } from '../storeInterfaces';
+import { ActionI, AuthStateI } from '../storeInterfaces';
 import * as constants from './constants';
-
-const initialState = {
+//have any
+const initialState:AuthStateI = {
     isLoggin: false,
     isLoading: false,
-    error: null
+    error: null,
+    currentUid: null
 };
 export const reducerAuth = (state = initialState, action:ActionI) => {
     switch (action.type) {
@@ -25,6 +26,11 @@ export const reducerAuth = (state = initialState, action:ActionI) => {
                 ...state,
                 error: action.payload,
                 isLoading: false,
+            };
+        case constants.ConstantsI.CURRENT_UID:
+            return {
+                ...state,
+                currentUid: action.payload
             };
         default:
             return state;

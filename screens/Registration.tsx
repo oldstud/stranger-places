@@ -3,10 +3,14 @@ import { useDispatch } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
 import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
-import { IScreenProps } from './interfaces';
+
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../interfaces';
+
+type PropsScreen = NativeStackScreenProps<RootStackParamList, 'Registration'>;
 
 
-export const Registration:React.FC<IScreenProps> = ({navigation}) => {
+export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
 
     const [email,setEmail] = React.useState("");
     const [password,setpassword] = React.useState("");
@@ -14,8 +18,14 @@ export const Registration:React.FC<IScreenProps> = ({navigation}) => {
     const dispatch = useDispatch();
 
     const handleRegistration = ():void => {
-      dispatch(RegistrationFirebase(email,password))
+      // if(password === repeatPassword && password.length > 3) {
+      // dispatch(RegistrationFirebase(email,password))
+      // navigation.navigate('ProfileUserData')
+      // }
+      navigation.navigate('ProfileUserData')
     }
+
+
 
     return (
     <View style={styles.wrapper}>

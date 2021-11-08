@@ -17,3 +17,9 @@ export function loginError(value:boolean) {
         payload: value
     }
 }
+export function currentUid(value:boolean) {
+    return {
+        type: constants.ConstantsI.CURRENT_UID,
+        payload: value
+    }
+}

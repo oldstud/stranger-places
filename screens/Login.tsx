@@ -1,33 +1,34 @@
 import * as React from 'react';
 import { useDispatch } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
-import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
-import { DB } from '../sglib.config';
-import { IScreenProps } from './interfaces';
-import { Link, NavigationContainer } from '@react-navigation/native';
+import {instanceDB} from '../sglib.config';
 
 
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../interfaces';
+import { LoginFirebase } from '../store/Auth/operations';
 
-export const Login:React.FC<IScreenProps> = ({navigation}):any => {
+type PropsScreen = NativeStackScreenProps<RootStackParamList, 'Login'>;
+
+export const Login:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
 
     const [email,setEmail] = React.useState("");
     const [password,setpassword] = React.useState("");
 
     const dispatch = useDispatch();
 
-    const handleLogin = async ():Promise<any> => {
-          
-       
-            const result = await DB.users.getAllUsers();
-            console.log(result)
+    const handleLogin = async () => {
+      const result = await instanceDB.users.getAllUsers();
+      console.log(result)
+        // dispatch(LoginFirebase(email,password))
         
     }
 
     return (
     <View style={styles.wrapper}>
       <Logo/>
-        <Text style={styles.subTitle}>Registration</Text>
+        <Text style={styles.subTitle}>Login</Text>
         <TextInput
         style={styles.input}
          onChangeText={setEmail}
@@ -45,7 +46,7 @@ export const Login:React.FC<IScreenProps> = ({navigation}):any => {
         style={styles.nextButton}
         onPress={handleLogin}
       >
-        <Text style={styles.text}>Sign Up</Text>
+        <Text style={styles.text}>Sign In</Text>
       </TouchableOpacity>
   
         <Button

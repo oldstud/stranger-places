@@ -6,43 +6,37 @@ import { AuthStateI } from '../storeInterfaces';
 import {
   loginRequest,
   loginSuccess,
-  loginError
+  loginError,
+  currentUid
 } from './actions'
 
+/// have ANY
 
 export const RegistrationFirebase = (email:string, password:string) => async (dispatch:ThunkDispatch<AuthStateI, void, Action>) => {
   dispatch(loginRequest());
-  try {
     auth()
       .createUserWithEmailAndPassword(email, password)
-      .then(() => {
+      .then((info)=> {
         console.log('User account created & signed in!');
-        dispatch(loginSuccess(true));
+        const uid:any = info.user.uid;
+        dispatch(currentUid(uid));
       })
-      // .then(()=>{
-      //   auth().onAuthStateChanged(function(user) {
-      //     if (user) {
-      //         console.log(user);
-      //         user.getIdToken().then(function(idToken) {  
-      //            console.log(idToken); // It shows the Firebase token now
-      //         });
-      //     }
-      // });
-      // })
       .catch((error)=>{
         dispatch(loginError(error));
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
         console.log(error);
       })
-  } catch (error:any) {
+}
 
-    
-    console.log(error);
-
-  }
+export const LoginFirebase = (email:string, password:string) => async (dispatch:ThunkDispatch<AuthStateI, void, Action>) => {
+  dispatch(loginRequest());
+  auth()
+  .signInWithEmailAndPassword(email, password)
+  .then(()=>{
+  dispatch(loginSuccess(true));
+    console.log('welcome')
+  })
+  .catch((error)=>{
+    dispatch(loginError(error.code))
+    console.log(error.code)
+  })
 }
