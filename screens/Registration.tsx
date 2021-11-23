@@ -1,31 +1,40 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
 import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
 
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../interfaces';
+import { RootState } from '../store/rootReducer';
+import { loginError } from '../store/Auth/actions';
 
 type PropsScreen = NativeStackScreenProps<RootStackParamList, 'Registration'>;
 
+//TS and validation
 
 export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
+  React.useEffect(()=>{
+    dispatch(loginError(''));
+  },[])
 
-    const [email,setEmail] = React.useState("");
-    const [password,setpassword] = React.useState("");
-    const [repeatPassword,setRepeatPassword] = React.useState("");
+    const [email,setEmail] = React.useState<string>("");
+    const [password,setpassword] = React.useState<string>("");
+    const [repeatPassword,setRepeatPassword] = React.useState<string>("");
     const dispatch = useDispatch();
+    const authError = useSelector((state:RootState) => state.auth.error)
 
     const handleRegistration = ():void => {
-      // if(password === repeatPassword && password.length > 3) {
-      // dispatch(RegistrationFirebase(email,password))
-      // navigation.navigate('ProfileUserData')
-      // }
-      navigation.navigate('ProfileUserData')
+      dispatch(loginError(''))
+      const checkEmail = /.+@.+\..+/i;
+      if(password === repeatPassword && password.length > 3 && checkEmail.test(email)) {
+        dispatch(RegistrationFirebase(email,password))
+        navigation.navigate('ProfileUserData')
+      } else {
+        dispatch(loginError('Incorrect data'))
+      }
+      // console.log(route)
     }
-
-
 
     return (
     <View style={styles.wrapper}>
@@ -49,12 +58,14 @@ export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => 
          value={repeatPassword}
          placeholder='Repeat password'
         />
+            <Text style={styles.error}>{authError}</Text>
         <TouchableOpacity
         style={styles.nextButton}
         onPress={handleRegistration}
       >
         <Text style={styles.text}>Sign Up</Text>
       </TouchableOpacity>
+  
         <Button
          title="< Sign In"
          color="#808080"
@@ -68,6 +79,12 @@ const styles = StyleSheet.create({
     wrapper: {
       height:"100%",
       justifyContent:'center',
+    },
+    error:{
+      height:20,
+      color:"red",
+      width:"100%",
+      textAlign:'center'
     },
     subTitle:{
       textAlign:'center',

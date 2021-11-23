@@ -1,13 +1,12 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import { IUserData } from '../screens/interfaces'
 import type { RootState, AppDispatch } from './rootReducer'
-
-
 
 export interface AuthStateI{
     isLoggin: boolean,
     isLoading: boolean,
     error: null | string | object,
-    currentUid:null | string
+    personalData:null | IUserData
 }
 export type IAuthStore = {
     auth:AuthStateI
@@ -19,6 +18,6 @@ export interface ActionI {
 }
 
 
-// Use throughout your app instead of plain `useDispatch` and `useSelector`
-export const useAppDispatch = () => useDispatch<AppDispatch>()
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+// не забыть
+export const useAppDispatch = () => useDispatch<AppDispatch>();
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

@@ -6,8 +6,7 @@ import { AuthStateI } from '../storeInterfaces';
 import {
   loginRequest,
   loginSuccess,
-  loginError,
-  currentUid
+  loginError
 } from './actions'
 
 /// have ANY
@@ -18,8 +17,6 @@ export const RegistrationFirebase = (email:string, password:string) => async (di
       .createUserWithEmailAndPassword(email, password)
       .then((info)=> {
         console.log('User account created & signed in!');
-        const uid:any = info.user.uid;
-        dispatch(currentUid(uid));
       })
       .catch((error)=>{
         dispatch(loginError(error));

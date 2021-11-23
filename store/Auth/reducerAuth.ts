@@ -5,7 +5,7 @@ const initialState:AuthStateI = {
     isLoggin: false,
     isLoading: false,
     error: null,
-    currentUid: null
+    personalData:null
 };
 export const reducerAuth = (state = initialState, action:ActionI) => {
     switch (action.type) {
@@ -27,10 +27,10 @@ export const reducerAuth = (state = initialState, action:ActionI) => {
                 error: action.payload,
                 isLoading: false,
             };
-        case constants.ConstantsI.CURRENT_UID:
+        case constants.ConstantsI.PERSONAL_DATA:
             return {
                 ...state,
-                currentUid: action.payload
+                personalData: action.payload
             };
         default:
             return state;

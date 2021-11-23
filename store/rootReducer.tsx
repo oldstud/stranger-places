@@ -3,7 +3,9 @@ import thunk from "redux-thunk"
 import {reducerAuth} from './Auth/reducerAuth';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { IAuthStore } from './storeInterfaces';
+
 //have any
+
 const rootReducer = combineReducers<any>({
     auth: reducerAuth,
     
