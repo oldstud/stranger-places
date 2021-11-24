@@ -20,6 +20,7 @@ import { useNavigation } from '@react-navigation/native';
 import { ChangePassword } from './screens/ChangePassword';
 
 
+
 const App = () => {
 
   const authStatus = useSelector((state:RootState) => state.auth.isLoggin);
@@ -28,10 +29,14 @@ const App = () => {
   const SettingsStack = createStackNavigator<SettingsStackParamList>();
   
 
+
 const SettingsStackScreen=()=> {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
 
+  const Stack = createStackNavigator();
+
   return (
+
     <SettingsStack.Navigator initialRouteName='ProfileUserTab'>
        <SettingsStack.Screen name="ProfileUserTab" component={ProfileUserTab} 
         initialParams={{ public: "false" }}
@@ -118,6 +123,7 @@ const SettingsStackScreen=()=> {
       </Stack.Navigator>
       }
     </NavigationContainer>
+
   );
 };
 

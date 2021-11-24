@@ -35,6 +35,7 @@ const handlePress = async():Promise<any> =>{
         />
 
         <Text> <Icon name="home" size={30} color="#900" /></Text>
+
         </View>
     )
 }

@@ -1,6 +1,7 @@
 import firestore from '@react-native-firebase/firestore';
 import StuffyGrannyLib from 'stuffy-granny-lib';
 
+
 //have any
 
  function updatedDB () {
@@ -32,4 +33,5 @@ import StuffyGrannyLib from 'stuffy-granny-lib';
 }
 
 export const instanceDB = updatedDB();
+
 

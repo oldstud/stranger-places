@@ -1,5 +1,6 @@
 export interface IScreenProps {
     [key: string]: string,
+
   }
 export interface IProfileRoutes {
  route:{ key: string
@@ -74,3 +75,4 @@ export type MediaType = 'photo' | 'video';
 export type AndroidVideoOptions = 'low' | 'high';
 export type iOSVideoOptions = 'low' | 'medium' | 'high';
 export type ErrorCode = 'camera_unavailable' | 'permission' | 'others';
+

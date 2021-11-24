@@ -37,6 +37,7 @@ export const Login:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
           }
       }
 
+
     return (
     <View style={styles.wrapper}>
       <Logo/>
@@ -47,7 +48,7 @@ export const Login:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
          value={email}
          placeholder='Email'
         />
-        
+
         <TextInput
          style={styles.input}
          onChangeText={setpassword}
@@ -65,6 +66,7 @@ export const Login:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
          color="#808080"
          onPress={() => navigation.navigate('Registration')}/>
           <Text style={styles.text}>dima@ukr.net smith3000</Text>
+
     </View>
     )
 } 
@@ -74,12 +76,14 @@ const styles = StyleSheet.create({
       height:"100%",
       justifyContent:'center',
     },
+
     error:{
       height:20,
       color:"red",
       width:"100%",
       textAlign:'center'
     },
+
     subTitle:{
       textAlign:'center',
       fontSize:20
@@ -101,6 +105,7 @@ const styles = StyleSheet.create({
     switchButton:{
      width:"75%",
      alignSelf:'center',
+
     },
     text:{
       fontSize:18
