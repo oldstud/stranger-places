@@ -1,10 +1,12 @@
-import { ActionI } from '../storeInterfaces';
+import { ActionI, AuthStateI } from '../storeInterfaces';
 import * as constants from './constants';
-
-const initialState = {
+//have any
+const initialState:AuthStateI = {
     isLoggin: false,
     isLoading: false,
-    error: null
+    error: null,
+    personalData:null
+
 };
 export const reducerAuth = (state = initialState, action:ActionI) => {
     switch (action.type) {
@@ -26,6 +28,13 @@ export const reducerAuth = (state = initialState, action:ActionI) => {
                 error: action.payload,
                 isLoading: false,
             };
+
+        case constants.ConstantsI.PERSONAL_DATA:
+            return {
+                ...state,
+                personalData: action.payload
+            };
+
         default:
             return state;
     }

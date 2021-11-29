@@ -1,20 +1,40 @@
 import * as React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {Button, StyleSheet, Text, TextInput, View,TouchableOpacity} from 'react-native';
 import { RegistrationFirebase } from '../store/Auth/operations';
 import Logo from '../components/Logo';
-import { IScreenProps } from './interfaces';
 
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../interfaces';
+import { RootState } from '../store/rootReducer';
+import { loginError } from '../store/Auth/actions';
 
-export const Registration:React.FC<IScreenProps> = ({navigation}) => {
+type PropsScreen = NativeStackScreenProps<RootStackParamList, 'Registration'>;
 
-    const [email,setEmail] = React.useState("");
-    const [password,setpassword] = React.useState("");
-    const [repeatPassword,setRepeatPassword] = React.useState("");
+//TS and validation
+
+export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
+  React.useEffect(()=>{
+    dispatch(loginError(''));
+  },[])
+
+    const [email,setEmail] = React.useState<string>("");
+    const [password,setpassword] = React.useState<string>("");
+    const [repeatPassword,setRepeatPassword] = React.useState<string>("");
     const dispatch = useDispatch();
+    const authError = useSelector((state:RootState) => state.auth.error)
 
     const handleRegistration = ():void => {
-      dispatch(RegistrationFirebase(email,password))
+      dispatch(loginError(''))
+      const checkEmail = /.+@.+\..+/i;
+      if(password === repeatPassword && password.length > 3 && checkEmail.test(email)) {
+        dispatch(RegistrationFirebase(email,password))
+        navigation.navigate('ProfileUserData')
+      } else {
+        dispatch(loginError('Incorrect data'))
+      }
+      // console.log(route)
+
     }
 
     return (
@@ -39,12 +59,16 @@ export const Registration:React.FC<IScreenProps> = ({navigation}) => {
          value={repeatPassword}
          placeholder='Repeat password'
         />
+
+            <Text style={styles.error}>{authError}</Text>
+
         <TouchableOpacity
         style={styles.nextButton}
         onPress={handleRegistration}
       >
         <Text style={styles.text}>Sign Up</Text>
       </TouchableOpacity>
+
         <Button
          title="< Sign In"
          color="#808080"
@@ -59,6 +83,14 @@ const styles = StyleSheet.create({
       height:"100%",
       justifyContent:'center',
     },
+
+    error:{
+      height:20,
+      color:"red",
+      width:"100%",
+      textAlign:'center'
+    },
+
     subTitle:{
       textAlign:'center',
       fontSize:20
