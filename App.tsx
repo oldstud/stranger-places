@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { ProfileScreenNavigationProp, RootStackParamList, SettingsStackParamList } from './interfaces';
+import { HomeStackParamList, ProfileScreenNavigationProp, RootStackParamList, SettingsStackParamList } from './interfaces';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/rootReducer';
 import { Home } from './screens/Home';
@@ -12,12 +12,11 @@ import { ProfileUserData } from './screens/ProfileUserData';
 import ChangePhoto from './screens/ChangePhoto';
 import { ProfileUserTab } from './screens/ProfileUserTab';
 import IconFA from 'react-native-vector-icons/FontAwesome';
-import IconAD from 'react-native-vector-icons/Entypo';
 import { AddNewPlace } from './screens/AddNewPlace';
-import { Button } from 'react-native';
 import { Settings } from './screens/Settings';
 import { useNavigation } from '@react-navigation/native';
 import { ChangePassword } from './screens/ChangePassword';
+import { ListPlaces } from './screens/ListPlaces';
 
 
 const App = () => {
@@ -26,9 +25,25 @@ const App = () => {
   const Stack = createStackNavigator<RootStackParamList>(); 
   const Tab = createBottomTabNavigator();
   const SettingsStack = createStackNavigator<SettingsStackParamList>();
+  const HomeStack = createStackNavigator<HomeStackParamList>();
   
+const HomeStackScreen = () => {
+  // const navigation = useNavigation<HomeStackParamList>();
+  return (
+    <HomeStack.Navigator initialRouteName='Home'>
+      <HomeStack.Screen name='Home' component={Home}
+       options={{
+        headerShown:false,}}/>
+      <HomeStack.Screen name='ListPlaces' component={ListPlaces}
+        options={{
+          headerShown:false,
+          presentation: 'transparentModal' }}/>
+    </HomeStack.Navigator>
+  )
+}
 
-const SettingsStackScreen=()=> {
+
+const SettingsStackScreen = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
 
   return (
@@ -54,7 +69,6 @@ const SettingsStackScreen=()=> {
         options={{ title:'Your Profile'}} 
         initialParams={{ firstPushingData: "false" }}/>
      
-      {/* other screens */}
     </SettingsStack.Navigator>
   );
 }
@@ -69,9 +83,10 @@ const SettingsStackScreen=()=> {
         tabBarActiveTintColor: 'tomato',
       })}
       >
-      <Tab.Screen name="Home" 
-      component={Home}
+      <Tab.Screen name="HomeStackScreen" 
+      component={HomeStackScreen}
       options={{
+        title:'Home',
         tabBarLabel: 'Home',
         tabBarItemStyle:{flex:4},
         tabBarIcon: ({ focused }) => (
@@ -82,6 +97,7 @@ const SettingsStackScreen=()=> {
       <Tab.Screen name="AddNewPlace" 
       component={AddNewPlace}
       options={{
+        title:'Add new place',
         tabBarLabelStyle:{display:'none'},
         tabBarItemStyle:{flex:1},
         tabBarIcon: ({ focused }) => (

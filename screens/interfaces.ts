@@ -17,7 +17,14 @@ export interface IUserData {
   user_id: string | null | undefined,
   user_name: string | null | undefined,
   }
-  
+
+//Home 
+  export interface IRegionOnMap {
+    latitude: number,
+    longitude: number,
+    latitudeDelta: number,
+    longitudeDelta: number,
+  }
 
 // camera screeen:ChangePhoto.tsx 
 
