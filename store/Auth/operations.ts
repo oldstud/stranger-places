@@ -9,6 +9,8 @@ import {
   loginError
 } from './actions'
 
+/// have ANY
+
 export const RegistrationFirebase = (email:string, password:string) => async (dispatch:ThunkDispatch<AuthStateI, void, Action>) => {
   dispatch(loginRequest());
     auth()

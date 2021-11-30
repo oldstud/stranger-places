@@ -4,9 +4,12 @@ buildscript {
     ext {
         buildToolsVersion = "30.0.2"
         minSdkVersion = 21
-        compileSdkVersion = 30
-        targetSdkVersion = 30
+        compileSdkVersion = 28
+        targetSdkVersion = 27
         ndkVersion = "21.4.7075529"
+        supportLibVersion = "28.0.0"
+        playServicesVersion = "17.0.0"
+        androidMapsUtilsVersion = "2.3.0"
     }
     repositories {
         google()
@@ -17,6 +20,8 @@ buildscript {
         classpath ('com.google.gms:google-services:4.3.10')
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
+
+            
     }
 }
 
@@ -37,3 +42,5 @@ allprojects {
         maven { url 'https://www.jitpack.io' }
     }
 }
+// extra["sdkVersion"] = 28
+// extra["supportLibVersion"] = "28.0.0"

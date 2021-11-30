@@ -4,6 +4,8 @@ import android.app.Application;
 import android.content.Context;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
+
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.imagepicker.ImagePickerPackage;
 import com.facebook.react.ReactInstanceManager;
@@ -30,7 +32,13 @@ public class MainApplication extends Application implements ReactApplication {
           // packages.add(new MyReactNativePackage());
           return packages;
         }
-
+    //             @Override
+    //        protected List<ReactPackage> getPackages() {
+    //           return Arrays.<ReactPackage>asList(
+    //             new MainReactPackage(),
+    //             new MapsPackage()
+    //     );
+    // }
         @Override
         protected String getJSMainModuleName() {
           return "index";

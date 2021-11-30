@@ -1,6 +1,5 @@
 export interface IScreenProps {
     [key: string]: string,
-
   }
 export interface IProfileRoutes {
  route:{ key: string
@@ -18,7 +17,15 @@ export interface IUserData {
   user_id: string | null | undefined,
   user_name: string | null | undefined,
   }
-  
+
+//Home 
+  export interface IRegionOnMap {
+    latitude: number,
+    longitude: number,
+    latitudeDelta: number,
+    longitudeDelta: number,
+  }
+
 
 // camera screeen:ChangePhoto.tsx 
 
@@ -75,4 +82,3 @@ export type MediaType = 'photo' | 'video';
 export type AndroidVideoOptions = 'low' | 'high';
 export type iOSVideoOptions = 'low' | 'medium' | 'high';
 export type ErrorCode = 'camera_unavailable' | 'permission' | 'others';
-

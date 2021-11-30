@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Text,StyleSheet } from 'react-native';
 
 const Logo:React.FC = () => {
-
     return (
         <Text style={styles.logo}>
             Stranger Places

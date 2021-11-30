@@ -76,7 +76,6 @@ const styles = StyleSheet.create({
       height:"100%",
       justifyContent:'center',
     },
-
     error:{
       height:20,
       color:"red",
@@ -105,7 +104,6 @@ const styles = StyleSheet.create({
     switchButton:{
      width:"75%",
      alignSelf:'center',
-
     },
     text:{
       fontSize:18

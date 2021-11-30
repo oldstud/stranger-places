@@ -34,7 +34,6 @@ export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => 
         dispatch(loginError('Incorrect data'))
       }
       // console.log(route)
-
     }
 
     return (
@@ -59,16 +58,13 @@ export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => 
          value={repeatPassword}
          placeholder='Repeat password'
         />
-
             <Text style={styles.error}>{authError}</Text>
-
         <TouchableOpacity
         style={styles.nextButton}
         onPress={handleRegistration}
       >
         <Text style={styles.text}>Sign Up</Text>
       </TouchableOpacity>
-
         <Button
          title="< Sign In"
          color="#808080"
@@ -83,14 +79,12 @@ const styles = StyleSheet.create({
       height:"100%",
       justifyContent:'center',
     },
-
     error:{
       height:20,
       color:"red",
       width:"100%",
       textAlign:'center'
     },
-
     subTitle:{
       textAlign:'center',
       fontSize:20
