@@ -18,6 +18,7 @@ target 'StrangerPlaces' do
 
   pod 'react-native-maps', :path => '../node_modules/react-native-maps'
 
+
   target 'StrangerPlacesTests' do
     inherit! :complete
     # Pods for testing

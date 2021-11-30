@@ -25,10 +25,9 @@ export const Home:React.FC<IScreenProps> = ({navigation}:any) => {
         dispatch(personalData(data))
     }
     React.useEffect(() => {
+
         personalDataToStore();
     }, [])
-
-    
 
     return(
   
@@ -62,3 +61,4 @@ const styles = StyleSheet.create({
     },
    });
    
+

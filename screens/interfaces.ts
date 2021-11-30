@@ -26,6 +26,7 @@ export interface IUserData {
     longitudeDelta: number,
   }
 
+
 // camera screeen:ChangePhoto.tsx 
 
 

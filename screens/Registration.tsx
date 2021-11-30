@@ -65,7 +65,6 @@ export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => 
       >
         <Text style={styles.text}>Sign Up</Text>
       </TouchableOpacity>
-  
         <Button
          title="< Sign In"
          color="#808080"

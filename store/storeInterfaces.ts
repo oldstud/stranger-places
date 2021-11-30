@@ -1,7 +1,9 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 import { IUserData } from '../screens/interfaces'
 import type { RootState, AppDispatch } from './rootReducer'
+
 //auth
+
 export interface AuthStateI{
     isLoggin: boolean,
     isLoading: boolean,
@@ -24,6 +26,7 @@ export interface IPlacesState{
     error: null | string | object,
     
 }
+
 
 // не забыть
 export const useAppDispatch = () => useDispatch<AppDispatch>();

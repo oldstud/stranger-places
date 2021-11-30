@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { HomeStackParamList, ProfileScreenNavigationProp, RootStackParamList, SettingsStackParamList } from './interfaces';
+
 import { useSelector } from 'react-redux';
 import { RootState } from './store/rootReducer';
 import { Home } from './screens/Home';
@@ -18,7 +19,6 @@ import { useNavigation } from '@react-navigation/native';
 import { ChangePassword } from './screens/ChangePassword';
 import { ListPlaces } from './screens/ListPlaces';
 
-
 const App = () => {
 
   const authStatus = useSelector((state:RootState) => state.auth.isLoggin);
@@ -32,8 +32,7 @@ const HomeStackScreen = () => {
   return (
     <HomeStack.Navigator initialRouteName='Home'>
       <HomeStack.Screen name='Home' component={Home}
-       options={{
-        headerShown:false,}}/>
+       options={{headerShown:false,}}/>
       <HomeStack.Screen name='ListPlaces' component={ListPlaces}
         options={{
           headerShown:false,
@@ -41,7 +40,6 @@ const HomeStackScreen = () => {
     </HomeStack.Navigator>
   )
 }
-
 
 const SettingsStackScreen = () => {
   const navigation = useNavigation<ProfileScreenNavigationProp>();
@@ -74,6 +72,7 @@ const SettingsStackScreen = () => {
 }
  
   return (
+
     <NavigationContainer>
       { authStatus ?
       <Tab.Navigator
@@ -87,6 +86,7 @@ const SettingsStackScreen = () => {
       component={HomeStackScreen}
       options={{
         title:'Home',
+
         tabBarLabel: 'Home',
         tabBarItemStyle:{flex:4},
         tabBarIcon: ({ focused }) => (

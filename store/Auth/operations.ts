@@ -37,3 +37,4 @@ export const LoginFirebase = (email:string, password:string) => async (dispatch:
     console.log(error.code)
   })
 }
+

@@ -6,6 +6,7 @@ import { IScreenProps } from './interfaces';
 export const AddNewPlace:React.FC<IScreenProps> = () => {
     
     
+
 const handlePress = async():Promise<any> =>{
     const allUsers =  await instanceDB.users.getAllUsers();
     console.log(allUsers)
