@@ -5,13 +5,13 @@ import { useDispatch } from 'react-redux';
 import HomeHeaderBtns from '../components/HomeHeaderBtns';
 import { instanceDB } from '../sglib.config';
 
-
 export const ListPlaces:React.FC<IScreenProps> = () => {
 
     const dispatch = useDispatch();
     const handlePress = async():Promise<any> =>{
         const allPlaces =  await instanceDB.places.getAllPlaces();
         console.log(allPlaces)
+     
     }
     React.useEffect(() => {
         handlePress();
@@ -21,6 +21,8 @@ export const ListPlaces:React.FC<IScreenProps> = () => {
         <View style={styles.container}>
             <HomeHeaderBtns activeButton='List'/>
             <View style={styles.test}></View>
+             
+            
       </View>
     )
 }

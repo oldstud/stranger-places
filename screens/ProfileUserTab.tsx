@@ -18,9 +18,9 @@ export const ProfileUserTab:React.FC<IProfileRoutes> = ({route}:IProfileRoutes) 
 
     return <View>
       <View style={styles.row}>
-        <PhotoCircle avatar_url={userData.avatar_url}/>
+        <PhotoCircle avatar_url={userData?.avatar_url}/>
         <View >
-        <Text style={styles.email}>{userData.user_name}</Text>
+        <Text style={styles.email}>{userData?.user_name}</Text>
         <Text>Followers TBC</Text>
         </View>
         </View>
