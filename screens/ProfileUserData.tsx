@@ -14,60 +14,70 @@ import { RootState } from '../store/rootReducer';
 
 export const ProfileUserData:React.FC<IScreenProps> = ({navigation,route}:any) => {
 
-  const personalDataFromStore = useSelector((state:RootState) => state.auth.personalData);
-  const dispatch = useDispatch();
-  const uidValue = auth().currentUser?.uid;
-  const userNameEmail = auth().currentUser?.email;
   let initialData = {
     about_user: "",
     avatar_url: "",
     first_name: "",
     last_name: "",
     location: {city: "", country: ""},
-    user_id: uidValue,  
-    user_name: userNameEmail,
-  };
+    user_id: "",  
+    user_name: "", };
+
+  const personalDataFromStore = useSelector((state:RootState) => state.auth.personalData);
+  const dispatch = useDispatch();
   const [userData,setUserData] = React.useState<IUserData>(initialData);
 
+     function uidAndEmailAdding () {
+        auth().onAuthStateChanged((user) => {
+          if (user) {
+            setUserData((prevState)=>({...prevState,user_id:user.uid,user_name:user.email}))
+          
+          } else {
+            console.log('bad')
+          }
+        });
+        
+      }
+    
+
   React.useEffect(()=> {
-    route.params.firstPushingData === 'false' 
+    route.params.firstPushingData === 'true' 
     ?
+    uidAndEmailAdding()
+    : 
     setUserData(personalDataFromStore)
-    :
-    console.log(route)
+   
   },[]) 
+
   React.useEffect(()=> {
     route.params.photoData && setUserData((prevState)=>({...prevState,avatar_url:route.params.photoData.base64}))
   },[route.params.photoData]) 
   
     const handleConfirm = async() => {
-      console.log(uidValue)
-      await instanceDB.users.setNewUser(uidValue,userData);
-      dispatch(personalData(userData));
-      route.params.firstPushingData === 'false' 
-      ?
-      dispatch(personalData(userData))&&
-      navigation.goBack()
-      : 
-      dispatch(loginSuccess(true));
-    }
 
-    const currentEmail = auth().currentUser?.email;
-   
-        
+      await instanceDB.users.setNewUser(userData.user_id,userData);
+      dispatch(personalData(userData));
+
+      route.params.firstPushingData === 'true' 
+      ?
+      dispatch(loginSuccess(true))
+      : 
+      dispatch(personalData(userData))&&navigation.goBack()
+    }
+      
     return( 
         <ScrollView style={styles.wrapper}>
-        {route.params.firstPushingData === 'false'?false:<Text style={styles.subTitle}>Profile</Text>}
+        {route.params.firstPushingData === 'true'?<Text style={styles.subTitle}>Profile</Text>:false}
         <View style={styles.row}>
         <TouchableOpacity style={styles.photo} 
         onPress={()=>navigation.navigate('ChangePhoto',{photoData:userData.avatar_url})}>
-          {userData.avatar_url
+          {userData?.avatar_url
            ?
         <PhotoCircle avatar_url={userData.avatar_url}/>
            : 
          <Text>Touch to add photo</Text>}</TouchableOpacity>
          
-        <Text style={styles.email}>{currentEmail}</Text>
+        <Text style={styles.email}>{userData.user_name}</Text>
         </View>
         <View style={styles.row}>
         <Text style={styles.label}>First Name</Text>

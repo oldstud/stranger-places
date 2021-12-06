@@ -1,5 +1,5 @@
 import firestore from '@react-native-firebase/firestore';
-import StuffyGrannyLib from 'stuffy-granny-lib';
+import StuffyGrannyLib, { IPlace } from 'stuffy-granny-lib';
 
 //have any
 
@@ -26,6 +26,20 @@ import StuffyGrannyLib from 'stuffy-granny-lib';
         return resolve(data);
         });
     })
+    },
+    uDB.places.updatedGetAllPlaces = () => {
+        return new Promise((resolve, reject) => {
+            uDB.collectionGroup('places')
+            .get()
+            .then((response:any) => {
+            const data: IPlace[] = [];
+            response.forEach((doc: any) => {
+                data.push({...doc.data(), _id: doc.id});
+            });
+
+            return resolve({ok: true, status: 200, data: data});
+            });
+        })
     }
     
     return uDB
