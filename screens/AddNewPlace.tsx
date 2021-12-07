@@ -9,6 +9,7 @@ import { AddPlaceStackParamList } from '../interfaces';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { IAddNewPlacePlaceData } from './interfaces';
 
+
 type PropsScreen = NativeStackScreenProps<AddPlaceStackParamList, 'AddNewPlace'>;
 
 export const AddNewPlace:React.FC<PropsScreen> = ({navigation,route}) => {

@@ -3,7 +3,6 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { AddPlaceStackParamList, HomeStackParamList, ProfileScreenNavigationProp, RootStackParamList, SettingsStackParamList } from './interfaces';
-
 import { useSelector } from 'react-redux';
 import { RootState } from './store/rootReducer';
 import { Home } from './screens/Home';
@@ -19,7 +18,6 @@ import { useNavigation } from '@react-navigation/native';
 import { ChangePassword } from './screens/ChangePassword';
 import { ListPlaces } from './screens/ListPlaces';
 
-
 const App = () => {
 
   const authStatus = useSelector((state:RootState) => state.auth.isLoggin);
@@ -28,6 +26,7 @@ const App = () => {
   const SettingsStack = createStackNavigator<SettingsStackParamList>();
   const HomeStack = createStackNavigator<HomeStackParamList>();
   const AddPlaceStack = createStackNavigator<AddPlaceStackParamList>();
+
   
 const HomeStackScreen = () => {
   // const navigation = useNavigation<HomeStackParamList>();
@@ -42,6 +41,7 @@ const HomeStackScreen = () => {
     </HomeStack.Navigator>
   )
 }
+
 const AddPlaceStackScreen = () => {
   return (
     <AddPlaceStack.Navigator initialRouteName='AddNewPlace'>

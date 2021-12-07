@@ -28,7 +28,7 @@ export const Home:React.FC<IScreenProps> = ({navigation}:any) => {
         
     }
     React.useEffect(() => {
-      
+
         personalDataToStore();
     }, [])
 

@@ -4,7 +4,9 @@ import { StackNavigationProp } from '@react-navigation/stack';
 
 export type ProfileScreenNavigationProp = StackNavigationProp<SettingsStackParamList>;
 export type HomeScreenNavigationProp = StackNavigationProp<HomeStackParamList>;
+
 export type AddNewPlaceNavigationProp = StackNavigationProp<AddPlaceStackParamList>;
+
 
 export type RootStackParamList = {
     Registration: undefined;
@@ -23,9 +25,11 @@ export type HomeStackParamList = {
     Home : undefined;
     ListPlaces : undefined;
  
+
   };
 export type AddPlaceStackParamList = {
     AddNewPlace : {photoData:{base64: string, uri: string}}| undefined;
     ChangePhoto :{circleMode:string ,photoData:string} | undefined;
   };
+
 
