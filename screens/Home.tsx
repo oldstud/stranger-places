@@ -20,9 +20,12 @@ export const Home:React.FC<IScreenProps> = ({navigation}:any) => {
     const[showHeaderButtons,setShowHeadersButton]=React.useState<boolean>(true)
     const dispatch = useDispatch();
     const personalDataToStore = async() => {
+      // await auth().signOut().then(() => console.log('User signed out!'));
+      // dispatch(loginSuccess(false));
         const uid = auth().currentUser?.uid;
         const data = await instanceDB.users.requestUserData(uid);
         dispatch(personalData(data))
+        
     }
     React.useEffect(() => {
 

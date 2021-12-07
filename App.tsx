@@ -2,8 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { HomeStackParamList, ProfileScreenNavigationProp, RootStackParamList, SettingsStackParamList } from './interfaces';
-
+import { AddPlaceStackParamList, HomeStackParamList, ProfileScreenNavigationProp, RootStackParamList, SettingsStackParamList } from './interfaces';
 import { useSelector } from 'react-redux';
 import { RootState } from './store/rootReducer';
 import { Home } from './screens/Home';
@@ -26,6 +25,8 @@ const App = () => {
   const Tab = createBottomTabNavigator();
   const SettingsStack = createStackNavigator<SettingsStackParamList>();
   const HomeStack = createStackNavigator<HomeStackParamList>();
+  const AddPlaceStack = createStackNavigator<AddPlaceStackParamList>();
+
   
 const HomeStackScreen = () => {
   // const navigation = useNavigation<HomeStackParamList>();
@@ -38,6 +39,19 @@ const HomeStackScreen = () => {
           headerShown:false,
           presentation: 'transparentModal' }}/>
     </HomeStack.Navigator>
+  )
+}
+
+const AddPlaceStackScreen = () => {
+  return (
+    <AddPlaceStack.Navigator initialRouteName='AddNewPlace'>
+      <AddPlaceStack.Screen name='AddNewPlace' component={AddNewPlace}
+       options={{headerShown:false}}/>
+      <AddPlaceStack.Screen name='ChangePhoto' component={ChangePhoto}
+        options={{
+          headerShown:false,
+          presentation: 'transparentModal' }}/>
+    </AddPlaceStack.Navigator>
   )
 }
 
@@ -86,7 +100,7 @@ const SettingsStackScreen = () => {
       component={HomeStackScreen}
       options={{
         title:'Home',
-
+        tabBarHideOnKeyboard:true,
         tabBarLabel: 'Home',
         tabBarItemStyle:{flex:4},
         tabBarIcon: ({ focused }) => (
@@ -94,10 +108,11 @@ const SettingsStackScreen = () => {
         ),
       }}
        />
-      <Tab.Screen name="AddNewPlace" 
-      component={AddNewPlace}
+      <Tab.Screen name="AddPlaceStackScreen" 
+      component={AddPlaceStackScreen}
       options={{
         title:'Add new place',
+        tabBarHideOnKeyboard:true,
         tabBarLabelStyle:{display:'none'},
         tabBarItemStyle:{flex:1},
         tabBarIcon: ({ focused }) => (
@@ -109,6 +124,7 @@ const SettingsStackScreen = () => {
        component={SettingsStackScreen} 
        options={{
          headerShown:false,
+         tabBarHideOnKeyboard:true,
         tabBarLabel: 'Profile',
         tabBarItemStyle:{flex:4},
         tabBarIcon: ({ focused }) => (

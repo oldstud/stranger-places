@@ -1,4 +1,3 @@
-import { transform } from '@babel/core';
 import React, {useState} from 'react';
 
 import {
@@ -12,6 +11,7 @@ import {
   PermissionsAndroid,
   Alert
 } from 'react-native';
+import { BorderlessButton } from 'react-native-gesture-handler';
 
 import {
   launchCamera,
@@ -23,7 +23,6 @@ import { RootState } from '../store/rootReducer';
 import { Callback, CameraOptions, IFilePath, ImageLibraryOptions } from './interfaces';
 
 //have any!!
-
 
 const ChangePhoto = ({navigation,route}:any) => {
   React.useEffect(()=>{
@@ -138,7 +137,7 @@ const ChangePhoto = ({navigation,route}:any) => {
   };
 
   const handleCustomBack = () => {
-    
+    route.params.circleMode == 'false' ? navigation.navigate('AddNewPlace', { photoData: filePath }):
     navigation.navigate('ProfileUserData', { photoData: filePath })
   }
 
@@ -147,9 +146,9 @@ const ChangePhoto = ({navigation,route}:any) => {
     
       <View style={styles.container}>
         {filePath.base64?
-         <PhotoCircle  avatar_url={filePath.base64}/>
+         <PhotoCircle  avatar_url={filePath.base64} circleMode={route.params.circleMode}/>
         :
-        <View style={styles.imageStyle}>
+        <View style={[styles.imageStyle, !route.params?.circleMode ? styles.disabledCircleMode:false]}>
         <Text>Place for your photo</Text>
         </View>
         }
@@ -226,6 +225,9 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     backgroundColor:'grey'
+  },
+  disabledCircleMode : {
+    borderRadius:1
   },
   row:{
     flexDirection:'row',

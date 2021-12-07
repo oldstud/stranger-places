@@ -26,9 +26,18 @@ export interface IUserData {
     longitudeDelta: number,
   }
 
+//addNewPlace
+export interface IAddNewPlacePlaceData {
+   img:string,
+   description:string,
+   location:
+   {_lat:number|any,
+    _long:number|any},
+    user_doc_id:string | undefined,
+    user_id:string | undefined
+}
 
 // camera screeen:ChangePhoto.tsx 
-
 
 export type Callback = (response: ImagePickerResponse) => any;
 
