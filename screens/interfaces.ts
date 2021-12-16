@@ -4,10 +4,11 @@ export interface IScreenProps {
 export interface IProfileRoutes {
  route:{ key: string
   name: string
-  params: {public: string}
+  params: {public: string,userInfo:IUserData}
   path: undefined
   "Symbol(CHILD_STATE)": any
   }}
+
 export interface IUserData {
   about_user: string,
   avatar_url: string,
@@ -16,6 +17,7 @@ export interface IUserData {
   location: {city: string, country: string},
   user_id: string | null | undefined,
   user_name: string | null | undefined,
+  // id?:string
   }
 
 //Home 
@@ -34,7 +36,8 @@ export interface IAddNewPlacePlaceData {
    {_lat:number|any,
     _long:number|any},
     user_doc_id:string | undefined,
-    user_id:string | undefined
+    user_id:string | undefined,
+    id?:string
 }
 
 // camera screeen:ChangePhoto.tsx 

@@ -18,7 +18,7 @@ export const reducerPlaces = (state = initialState, action:ActionI) => {
         case constants.ConstantsI.PLACES_SUCCESS:
             return {
                 ...state,
-                isLoggin:action.payload,
+                allPlaces:action.payload,
                 isLoading: false,
                 error: null
             };
