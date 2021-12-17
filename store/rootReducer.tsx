@@ -3,11 +3,13 @@ import thunk from "redux-thunk"
 import {reducerAuth} from './Auth/reducerAuth';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import { IAuthStore } from './storeInterfaces';
+import { reducerPlaces } from './Places/reducerPlaces';
 
 //have any
 
 const rootReducer = combineReducers<any>({
     auth: reducerAuth,
+    places: reducerPlaces
     
 });
 

@@ -65,7 +65,7 @@ export const Login:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
          title="Sign Up >"
          color="#808080"
          onPress={() => navigation.navigate('Registration')}/>
-          <Text style={styles.text}>dima@ukr.net smith3000</Text>
+         
 
     </View>
     )

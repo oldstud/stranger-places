@@ -24,13 +24,17 @@ import StuffyGrannyLib, { IPlace } from 'stuffy-granny-lib';
         .get()
         .then(response => {
         const data = response.data();
+        console.log(response)
         return resolve(data);
-        });
+        })
+        .catch((error)=>{
+            console.log('error from UDB:',error)
+        })
     })
     },
     uDB.places.updatedGetAllPlaces = () => {
         return new Promise((resolve, reject) => {
-            uDB.collectionGroup('places')
+            firestore().collectionGroup('places')
             .get()
             .then((response:any) => {
             const data: IPlace[] = [];
@@ -40,6 +44,22 @@ import StuffyGrannyLib, { IPlace } from 'stuffy-granny-lib';
 
             return resolve({ok: true, status: 200, data: data});
             });
+        })
+    }
+    uDB.places.updateMyPlaces = (id:string) => {
+        return new Promise((resolve, reject) => {
+            firestore().collection("users").doc(id).collection('places')
+            .get()
+            .then((querySnapshot) => {
+                const placesArray:IPlace[] = [];
+                querySnapshot.forEach((item)=>{
+                    placesArray.push(item.data())
+                })
+                return resolve(placesArray);
+            })
+            .catch(() => {
+            reject("Error getting documents")
+        });
         })
     }
     

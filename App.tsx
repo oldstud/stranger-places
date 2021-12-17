@@ -17,6 +17,7 @@ import { Settings } from './screens/Settings';
 import { useNavigation } from '@react-navigation/native';
 import { ChangePassword } from './screens/ChangePassword';
 import { ListPlaces } from './screens/ListPlaces';
+import { PlaceDetail } from './screens/PlaceDetail';
 
 const App = () => {
 
@@ -34,6 +35,13 @@ const HomeStackScreen = () => {
     <HomeStack.Navigator initialRouteName='Home'>
       <HomeStack.Screen name='Home' component={Home}
        options={{headerShown:false,}}/>
+      <HomeStack.Screen name='PlaceDetail' component={PlaceDetail}
+       options={{
+                  title:'Details'}}/>
+      <HomeStack.Screen name='ProfileUserTab' component={ProfileUserTab}
+       options={{
+                  title:'Profile'}}/>
+
       <HomeStack.Screen name='ListPlaces' component={ListPlaces}
         options={{
           headerShown:false,
@@ -74,6 +82,8 @@ const SettingsStackScreen = () => {
           />
         ),}}
         />
+      <SettingsStack.Screen name="PlaceDetail" component={PlaceDetail}options={{
+        title:'About Place',}}/>
       <SettingsStack.Screen name="Settings" component={Settings}/>
       <SettingsStack.Screen name="ChangePassword" component={ChangePassword}/>
       <SettingsStack.Screen name="ChangePhoto" component={ChangePhoto}/>

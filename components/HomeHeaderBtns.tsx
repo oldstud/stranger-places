@@ -26,7 +26,7 @@ const HomeHeaderBtns:React.FC<IScreenProps> = (props) => {
                <Text style={[styles.btnText,props.activeButton == 'List'?styles.btnTextActive:false]}>List</Text>
             </TouchableOpacity>
         </View>
-    )
+    )  
   
 }
 const styles = StyleSheet.create({

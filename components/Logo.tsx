@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Text,StyleSheet } from 'react-native';
+import { IScreenProps } from '../screens/interfaces';
 
-const Logo:React.FC = () => {
+const Logo:React.FC<IScreenProps> = () => {
     return (
         <Text style={styles.logo}>
             Stranger Places
