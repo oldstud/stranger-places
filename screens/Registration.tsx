@@ -11,7 +11,6 @@ import { loginError } from '../store/Auth/actions';
 
 type PropsScreen = NativeStackScreenProps<RootStackParamList, 'Registration'>;
 
-//TS and validation
 
 export const Registration:React.FC<PropsScreen> = ({navigation}:PropsScreen) => {
   React.useEffect(()=>{

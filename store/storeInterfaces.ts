@@ -1,5 +1,5 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
-import { IUserData } from '../screens/interfaces'
+import { IAddNewPlacePlaceData, IUserData } from '../screens/interfaces'
 import type { RootState, AppDispatch } from './rootReducer'
 
 //auth
@@ -22,7 +22,7 @@ export interface ActionI {
 export interface IPlacesState{
     gettingData:boolean,
     isLoading:boolean,
-    allPlaces:null | Array<object>,
+    allPlaces:Array<object> | Array<IAddNewPlacePlaceData>,
     error: null | string | object,
     
 }

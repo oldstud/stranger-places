@@ -14,3 +14,8 @@ export interface IPlaceListDataPropsData {
         user_id: string,
     
 }
+
+export interface ISubscribeProps {
+    userId:any
+}
+
