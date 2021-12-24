@@ -18,8 +18,8 @@ export const FollowersCount:React.FC<ISubscribeProps> = (props) => {
             let followers:any = [];
            documentSnapshot.docs.forEach((data)=>{
 
-            followers = [...followersState,data.data()]
-            
+            followers = [...followers,data.data()]
+            console.log(followers)
            })
            setFollowersState(followers)   
           });

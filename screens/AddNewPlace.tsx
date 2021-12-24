@@ -54,7 +54,7 @@ export const AddNewPlace:React.FC<PropsScreen> = ({navigation,route}) => {
         onPress={()=>{
             navigation.navigate('ChangePhoto',{circleMode:"false",photoData:placeData.img})
         }}
-        >
+        > 
             {placeData.img ?
            <PhotoCircle avatar_url={placeData.img} circleMode="false"/> 
            : <Text style = {styles.internalText}>Tap to add Photo</Text>}
