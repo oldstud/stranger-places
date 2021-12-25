@@ -30,6 +30,7 @@ export type HomeStackParamList = {
 export type AddPlaceStackParamList = {
     AddNewPlace : {photoData:{base64: string, uri: string}}| undefined;
     ChangePhoto :{circleMode:string ,photoData:string} | undefined;
+    Home:undefined;
   };
 
 

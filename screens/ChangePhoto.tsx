@@ -148,7 +148,7 @@ const ChangePhoto = ({navigation,route}:any) => {
         {filePath.base64?
          <PhotoCircle  avatar_url={filePath.base64} circleMode={route.params.circleMode}/>
         :
-        <View style={[styles.imageStyle, !route.params?.circleMode ? styles.disabledCircleMode:false]}>
+        <View style={[styles.imageStyle, route.params?.circleMode =='false' ? styles.disabledCircleMode:false]}>
         <Text>Place for your photo</Text>
         </View>
         }

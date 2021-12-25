@@ -15,7 +15,7 @@ export interface IUserData {
   first_name: string,
   last_name: string,
   location: {city: string, country: string},
-  user_id: string | null | undefined,
+  user_id: string,
   user_name: string | null | undefined,
   // id?:string
   }

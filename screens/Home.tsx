@@ -3,7 +3,7 @@ import { ActivityIndicator, Button, StyleSheet, Text, View } from 'react-native'
 import { instanceDB } from '../sglib.config';
 import { IRegionOnMap, IScreenProps } from './interfaces';
 import auth from '@react-native-firebase/auth';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginSuccess, personalData } from '../store/Auth/actions';
 import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
 import HomeHeaderBtns from '../components/HomeHeaderBtns';
@@ -11,14 +11,16 @@ import firestore from '@react-native-firebase/firestore';
 import { placesSuccess } from '../store/Places/actions';
 import { useNavigation } from '@react-navigation/native';
 import { HomeScreenNavigationProp } from '../interfaces';
+import { RootState } from '../store/rootReducer';
 
-const navigation = useNavigation<HomeScreenNavigationProp>(); 
+// const navigation = useNavigation<HomeScreenNavigationProp>(); 
  
-export const Home:React.FC<IScreenProps> = () => {
+export const Home:React.FC<IScreenProps> = ({navigation}:any) => {
 
     const [indicator,setIndicator]=React.useState<boolean>(false);
     const [allPlaces, setAllPlaces] = React.useState<any>([]);
     const dispatch = useDispatch();
+    const allPlacesInStore = useSelector((state:RootState) => state.places.allPlaces)
 
     const reqestPlacesData = async() => {
       const documentsIds:Array<string> = [];
@@ -43,7 +45,7 @@ export const Home:React.FC<IScreenProps> = () => {
       })
       return resolve(allPlaces)
   })
-    // setAllPlaces(allPlacesRequest);
+
 
   }
     const personalDataToStore = async() => {
@@ -78,7 +80,7 @@ export const Home:React.FC<IScreenProps> = () => {
           provider={PROVIDER_GOOGLE} 
           style={styles.map}
           >
-          { allPlaces.map((marker:any) => (
+          { allPlacesInStore.map((marker:any) => (
           <Marker 
 
           style={{ position: 'absolute', top: 100, left: 50 }}

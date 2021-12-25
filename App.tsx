@@ -55,6 +55,8 @@ const AddPlaceStackScreen = () => {
     <AddPlaceStack.Navigator initialRouteName='AddNewPlace'>
       <AddPlaceStack.Screen name='AddNewPlace' component={AddNewPlace}
        options={{headerShown:false}}/>
+      <AddPlaceStack.Screen name='Home' component={Home}
+       options={{headerShown:false}}/>
       <AddPlaceStack.Screen name='ChangePhoto' component={ChangePhoto}
         options={{
           headerShown:false,

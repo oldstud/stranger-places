@@ -1,10 +1,11 @@
 import { ActionI, AuthStateI, IPlacesState } from '../storeInterfaces';
+import { allPlaces } from './actions';
 import * as constants from './constants';
 //have any
 const initialState:IPlacesState = {
     gettingData:false,
     isLoading:false,
-    allPlaces:null,
+    allPlaces:[],
     error: null,
 
 };
@@ -27,6 +28,11 @@ export const reducerPlaces = (state = initialState, action:ActionI) => {
                 ...state,
                 error: action.payload,
                 isLoading: false,
+            };
+        case constants.ConstantsI.PLACES_ADD_NEW_PACE:
+            return {
+                ...state,
+                allPlaces:[...state.allPlaces,action.payload]
             };
         default:
             return state;

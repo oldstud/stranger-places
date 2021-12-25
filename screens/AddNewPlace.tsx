@@ -8,17 +8,20 @@ import auth from '@react-native-firebase/auth';
 import { AddPlaceStackParamList } from '../interfaces';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { IAddNewPlacePlaceData } from './interfaces';
+import { useDispatch } from 'react-redux';
+import { addNewPlace } from '../store/Places/actions';
 
 
 type PropsScreen = NativeStackScreenProps<AddPlaceStackParamList, 'AddNewPlace'>;
 
 export const AddNewPlace:React.FC<PropsScreen> = ({navigation,route}) => {
     const uidValue = auth().currentUser?.uid;
-    const initialState = { img:'',description:'',location:{_lat:'',_long:''},user_doc_id:uidValue,user_id:uidValue};
+    const initialState = { img:'',description:'',location:{_lat:'',_long:''},user_doc_id:uidValue,user_id:uidValue,id:Math.random().toString(12).substring(0)};
     const [placeData, setPlaceData] = React.useState<IAddNewPlacePlaceData>(initialState);
     const [error, setError] = React.useState<null | string>(null)
- 
+    const dispatch = useDispatch();
     
+ 
     React.useEffect(()=> {
         route.params?.photoData && setPlaceData((prevState:any)=>({...prevState,img:route.params?.photoData.base64})) 
         console.log(route)
@@ -36,10 +39,11 @@ export const AddNewPlace:React.FC<PropsScreen> = ({navigation,route}) => {
         element == false ? validateFields = false : true
       });
   
-     validateFields ? await instanceDB.places.createPlace(placeData,uidValue) : setError('All fields is required. Please check it')
+     validateFields ? await instanceDB.places.createPlace(placeData,uidValue)&&dispatch(addNewPlace(placeData)) : setError('All fields is required. Please check it')
      setPlaceData(initialState)
+     
      navigation.goBack();
-    
+    // navigation.navigate('Home')
     }
     return(
     <ScrollView>
@@ -50,7 +54,7 @@ export const AddNewPlace:React.FC<PropsScreen> = ({navigation,route}) => {
         onPress={()=>{
             navigation.navigate('ChangePhoto',{circleMode:"false",photoData:placeData.img})
         }}
-        >
+        > 
             {placeData.img ?
            <PhotoCircle avatar_url={placeData.img} circleMode="false"/> 
            : <Text style = {styles.internalText}>Tap to add Photo</Text>}
